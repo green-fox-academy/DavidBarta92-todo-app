@@ -9,6 +9,7 @@ import java.util.List;
 public class TasksFile {
     private static Path filePath;
     private static List<String> lines;
+    private static String line;
 
     public static Path getPath(){
         try{
@@ -19,8 +20,20 @@ public class TasksFile {
         }
     }
 
-    public static List<String> getTasks() throws IOException {
+    public static List<String> getLines() throws IOException {
             lines = Files.readAllLines(TasksFile.getPath());
             return lines;
+    }
+
+    public static String getOneLine(int num){
+        try {
+            lines = Files.readAllLines(TasksFile.getPath());
+            for (int i = 0; i < num ; i++){
+                line = lines.get(i);
+            }
+            return line;
+        } catch (IOException e) {
+            return null;
+        }
     }
 }

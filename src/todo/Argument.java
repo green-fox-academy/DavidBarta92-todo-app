@@ -8,9 +8,9 @@ import java.util.List;
 public class Argument {
     public static void list() throws IOException {
         try {
-            if (TasksFile.getTasks().size() > 0){
-                for (int i = 0; i< TasksFile.getTasks().size(); i++){
-                    System.out.println((i+1) + " - " + TasksFile.getTasks().get(i));
+            if (TasksFile.getLines().size() > 0){
+                for (int i = 0; i< TasksFile.getLines().size(); i++){
+                    System.out.println((i+1) + " - " + TasksFile.getLines().get(i));
                 }
             }
             else {
@@ -24,10 +24,10 @@ public class Argument {
     public static void add(String newTask) throws IOException {
         try {
             List<String> content = new ArrayList<String>();
-            for (int i = 0; i < TasksFile.getTasks().size(); i++) {
-                content.add((String) TasksFile.getTasks().get(i));
+            for (int i = 0; i < TasksFile.getLines().size(); i++) {
+                content.add((String) TasksFile.getLines().get(i));
             }
-            content.add(newTask);
+            content.add("[ ] " + newTask);
             Files.write(TasksFile.getPath(), content);
         } catch (Exception e){
             Help.noTask();
@@ -39,9 +39,9 @@ public class Argument {
             int num = (Integer.parseInt(number))-1;
             List<String> content = new ArrayList<String>();
             int i = 0;
-            while (i < TasksFile.getTasks().size()) {
+            while (i < TasksFile.getLines().size()) {
                 if (i != num){
-                    content.add((String) TasksFile.getTasks().get(i));
+                    content.add((String) TasksFile.getLines().get(i));
                 }
                 i++;
             }
@@ -56,9 +56,11 @@ public class Argument {
             int num = (Integer.parseInt(number))-1;
             List<String> content = new ArrayList<String>();
             int i = 0;
-            while (i < TasksFile.getTasks().size()) {
+            while (i < TasksFile.getLines().size()) {
                 if (i == num){
-                    // akkor valami lesz
+                    Task task = new Task(i);
+                    task.setToChecked();
+                    content.add(task.convertToLine());
                 }
                 i++;
             }
