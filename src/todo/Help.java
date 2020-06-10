@@ -1,9 +1,11 @@
+package todo;
+
 public class Help {
 
     public static void allArguments(){
         System.out.println("$ todo\n" +
                 "\n" +
-                "Command Line Todo application\n" +
+                "Command Line todo.Todo application\n" +
                 "=============================\n" +
                 "\n" +
                 "Command line arguments:\n" +
