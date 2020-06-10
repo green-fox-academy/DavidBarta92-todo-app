@@ -14,4 +14,8 @@ public class Help {
                 "    -r   Removes an task\n" +
                 "    -c   Completes an task");
     }
+
+    public static void noTask(){
+        System.out.println("Unable to add: no task provided.");
+    }
 }
