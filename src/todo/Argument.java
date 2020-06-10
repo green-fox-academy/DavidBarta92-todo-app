@@ -33,4 +33,21 @@ public class Argument {
             Help.noTask();
         }
     }
+
+    public static void remove(String number) throws IOException{
+        try {
+            int num = (Integer.parseInt(number))-1;
+            List<String> content = new ArrayList<String>();
+            int i = 0;
+            while (i < TasksFile.getTasks().size()) {
+                if (i != num){
+                    content.add((String) TasksFile.getTasks().get(i));
+                }
+                i++;
+            }
+            Files.write(TasksFile.getPath(), content);
+        } catch (Exception e){
+            Help.wrongNumber(number);
+        }
+    }
 }
