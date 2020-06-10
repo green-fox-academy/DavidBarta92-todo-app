@@ -50,4 +50,20 @@ public class Argument {
             Help.wrongNumber(number);
         }
     }
+
+    public static void check(String number) throws IOException{
+        try {
+            int num = (Integer.parseInt(number))-1;
+            List<String> content = new ArrayList<String>();
+            int i = 0;
+            while (i < TasksFile.getTasks().size()) {
+                if (i == num){
+                    // akkor valami lesz
+                }
+                i++;
+            }
+        } catch (Exception e){
+            Help.wrongNumber(number);
+        }
+    }
 }
