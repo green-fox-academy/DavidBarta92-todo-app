@@ -2,24 +2,15 @@ package todo;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Argument {
-    public static List getTasks() throws IOException {
-        Path filePath = Paths.get("todo-data.txt");
-        List<String> lines = Files.readAllLines(filePath);
-        return lines;
-    }
-
     public static void list() throws IOException {
         try {
-            Argument.getTasks();
-            if (Argument.getTasks().size() > 0){
-                for (int i = 0; i< Argument.getTasks().size(); i++){
-                    System.out.println((i+1) + " - " + Argument.getTasks().get(i));
+            if (TasksFile.getTasks().size() > 0){
+                for (int i = 0; i< TasksFile.getTasks().size(); i++){
+                    System.out.println((i+1) + " - " + TasksFile.getTasks().get(i));
                 }
             }
             else {
@@ -31,18 +22,15 @@ public class Argument {
     }
 
     public static void add(String newTask) throws IOException {
-        if (newTask.equals("")){
-            Help.noTask();
-        }
-        else{
-            Argument.getTasks();
-            List<String> content = new ArrayList();
-            for (int i = 0; i < Argument.getTasks().size(); i++){
-                content.add((String) Argument.getTasks().get(i));
+        try {
+            List<String> content = new ArrayList<String>();
+            for (int i = 0; i < TasksFile.getTasks().size(); i++) {
+                content.add((String) TasksFile.getTasks().get(i));
             }
             content.add(newTask);
-            Path filePath = Paths.get("todo-data.txt");
-            Files.write(filePath, content);
+            Files.write(TasksFile.getPath(), content);
+        } catch (Exception e){
+            Help.noTask();
         }
     }
 }
