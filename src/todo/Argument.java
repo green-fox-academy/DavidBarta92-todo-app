@@ -53,18 +53,21 @@ public class Argument {
 
     public static void check(String number) throws IOException{
         try {
-            int num = (Integer.parseInt(number));
+            int num = (Integer.parseInt(number))-1;
             List<String> content = new ArrayList<String>();
             int i = 0;
             while (i < TasksFile.getLines().size()) {
                 if (i == num){
                     Task task = new Task(i);
                     task.setToChecked();
-                    content.add(task.convertToLine());
-                    System.out.println(task.convertToLine()); //---------------------------------
+                    content.add((String) task.convertToLine());
+                }
+                else{
+                    content.add((String) TasksFile.getLines().get(i));
                 }
                 i++;
             }
+            Files.write(TasksFile.getPath(), content);
         } catch (Exception e){
             Help.wrongNumber(number);
         }

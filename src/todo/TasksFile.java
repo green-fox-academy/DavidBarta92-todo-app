@@ -25,10 +25,10 @@ public class TasksFile {
             return lines;
     }
 
-    public static String getOneLine(int num){
+    public static String getOneLine(int index){
         try {
             lines = Files.readAllLines(TasksFile.getPath());
-            for (int i = 0; i < num ; i++){
+            for (int i = 0; i <= index ; i++){
                 line = lines.get(i);
             }
             return line;
