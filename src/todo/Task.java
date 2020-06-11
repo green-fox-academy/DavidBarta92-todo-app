@@ -7,8 +7,8 @@ public class Task {
     private  String name;
     private boolean checked;
 
-    public Task(int number){
-        String line = TasksFile.getOneLine(number);
+    public Task(int numberOfLine){
+        String line = TasksFile.getOneLine(numberOfLine);
         List<Character> lineInChar = new ArrayList<>();
         for (char ch : line.toCharArray()) {
             lineInChar.add(ch);
