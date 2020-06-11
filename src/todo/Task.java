@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Task {
-    private  String name;
+    private String name;
     private boolean checked;
 
     public Task(int indexOfLine){
@@ -24,10 +24,6 @@ public class Task {
             nameBuilder.append(lineInChar.get(i));
         }
         this.name = nameBuilder.toString();
-    }
-
-    public boolean isChecked(){
-        return this.checked;
     }
 
     public void setToChecked(){

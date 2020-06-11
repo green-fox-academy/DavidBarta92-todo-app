@@ -7,13 +7,13 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class TasksFile {
-    private static Path filePath;
+    private static final Path filePath = Paths.get("C:\\Users\\MY\\Documents\\greenfox\\DavidBarta92-todo-app\\todo-data.txt");
     private static List<String> lines;
     private static String line;
 
     public static Path getPath(){
         try{
-            return filePath = Paths.get("C:\\Users\\MY\\Documents\\greenfox\\DavidBarta92-todo-app\\todo-data.txt");
+            return filePath;
         } catch (Exception e){
             Help.noTask();
             return null;

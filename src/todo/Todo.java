@@ -3,7 +3,7 @@ package todo;
 import java.io.IOException;
 
 public class Todo {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         try {
             if (args.length == 0) Help.allArguments();
             else if (args[0].equals("-l")) Argument.list();
